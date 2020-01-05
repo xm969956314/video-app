@@ -231,21 +231,26 @@ export default {
 }
 .hot-item--article h4{
   color: #262626;
+  font: normal 400 1rem/1 "Microsoft Yahei";
 }
 .hot-item--article .hot-item--detail{
   display: flex;
 }
 .hot-item--article p, .hot-item--article .detail-viewing{
   color: #808080;
+  font: normal 400 0.9rem/1 "Microsoft Yahei";
 }
 .hot-item--article .detail-favorable{
   color: #f87074;
+  font: normal 400 0.9rem/1 "Microsoft Yahei";
 }
 .hot-item--article .detail-member{
   background: url('../../assets/member-bg.png') no-repeat scroll center;
   background-size: 100% 100%;
+  padding: 0.2rem 0.4rem;
 }
 .hot-item--article .detail-member--join {
   color: #675928;
+  font: normal 400 1rem/1 "Microsoft Yahei";
 }
 </style>
