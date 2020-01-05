@@ -7,6 +7,7 @@ import './style/index.css'
 // load vant
 import Vant from 'vant'
 import 'vant/lib/index.css'
+// import 'vant/lib/index.scss'
 
 Vue.use(Vant)
 Vue.config.productionTip = false
