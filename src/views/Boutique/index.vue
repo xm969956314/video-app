@@ -48,7 +48,7 @@
     </div>
     <!-- item 视频列表 -->
     <!-- 下拉刷新 @refresh="onRefresh"，上拉加载 @load="onLoad" -->
-    <van-pull-refresh v-model="isLoading">
+    <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
       <van-list v-model="isUpLoading"
                 :finished="upFinished"
                 @load="onLoad"

@@ -48,7 +48,7 @@
     </div>
     <!-- item 视频列表 -->
     <!-- 下拉刷新 @refresh="onRefresh"，上拉加载 @load="onLoad" -->
-    <van-pull-refresh v-model="isLoading">
+    <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
       <van-list v-model="isUpLoading"
                 :finished="upFinished"
                 @load="onLoad"
@@ -141,7 +141,7 @@ export default {
       // 加入会员
       console.log(item, i)
       if (!this.userInfo.name) {
-        this.$route.push('/Register')
+        this.$router.push('/Register')
       }
     },
     onLoad () { // 上拉调用此函数
@@ -167,6 +167,7 @@ export default {
     padding: 1.2rem 0.6rem 0.2rem 0.2rem;
     .hot-header--search {
       display: flex;
+      justify-items: center;
       .hot-header--search-input {
         background: transparent !important;
         width: 68%;
@@ -196,19 +197,22 @@ export default {
           color: #fff;
         }
       }
-    }
-    .hot-header--customer {
-      background: url("../../assets/customer.png") no-repeat scroll center;
-      background-size: 100% 100%;
-      margin: 0 4% 0 12.4%;
-      width: 1.8rem;
-      height: 1.8rem;
-    }
-    .hot-header--download {
-      background: url("../../assets/download.png") no-repeat scroll center;
-      background-size: 100% 100%;
-      width: 1.8rem;
-      height: 1.8rem;
+      a{
+        background: url() no-repeat scroll center;
+        background-size: 100% 100%;
+        width: 1.5rem;
+        height: 1.5rem;
+        position: relative;
+        // margin-top: 50%;
+        transform: translateY(22%);
+      }
+      .hot-header--customer {
+        background-image: url("../../assets/customer.png");
+        margin: 0 4% 0 12.4%;
+      }
+      .hot-header--download {
+        background-image: url("../../assets/download.png");
+      }
     }
     /* nav 导航 */
     .hot-header--nav {
@@ -222,6 +226,10 @@ export default {
           font-weight: 700;
           font-size: 1.1rem;
         }
+      }
+      .van-tabs__line{
+        bottom: 21px;
+        padding: 0 0.3rem;
       }
     }
   }
