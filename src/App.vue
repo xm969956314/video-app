@@ -61,7 +61,18 @@ export default {
 
 <style>
 #app {
-  padding: 0;
+  padding-bottom: 3rem;
+  /* chrome 和Safari 隐藏滚动条但能滚动*/
+  /* div::-webkit-scrollbar { width: 0 !important; } */
+  /* IE 10+ */ 
+  -ms-overflow-style: none;
+  /* Firefox */
+  overflow: -moz-scrollbars-none;
+}
+/* chrome 和Safari 隐藏滚动条但能滚动*/
+#app::-webkit-scrollbar{
+  /* display: none; */
+  width: 0 !important;
 }
 
 .app-tabbar{
