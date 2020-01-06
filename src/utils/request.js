@@ -2,10 +2,10 @@ import Vue from 'vue'
 import axios from 'axios'
 import { Notify } from 'vant'
 Vue.prototype.$axios = axios
-  // const whiteList = ['/api', '/nodeapi', '/groupuser']
+// const whiteList = ['/api', '/nodeapi', '/groupuser']
 axios.defaults.timeout = 5000 // 响应时间
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8' // 配置请求头
-  // POST传参序列化(添加请求拦截器)
+// POST传参序列化(添加请求拦截器)
 axios.interceptors.request.use(config => {
   return config
 }, error => {

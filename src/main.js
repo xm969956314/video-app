@@ -10,7 +10,11 @@ import '@/utils/request'
 import Vant from 'vant'
 import 'vant/lib/index.css'
 
+// use cookies
+import VueCookies from 'vue-cookies'
+
 Vue.use(Vant)
+Vue.use(VueCookies)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
