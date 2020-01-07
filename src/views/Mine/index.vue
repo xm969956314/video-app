@@ -1,7 +1,7 @@
 <template>
   <div class="mine">
     <!-- 个人中心用户信息 -->
-    <div class="mine-user">
+    <!-- <div class="mine-user">
       <div class="mine-user--title text-center">
         <a href="javascript:;" @click="goback">
           <van-icon name="arrow-left"
@@ -11,8 +11,6 @@
       </div>
       <div class="mine-user--info clearfix">
         <div class="mine-user--info-img">
-
-          <!-- <img :src="" alt="" srcset=""> -->
         </div>
         <div class="mine-user--info-detail">
           <div class="detail-name">{{user.name}}</div>
@@ -23,7 +21,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -78,7 +76,7 @@ export default {
         }
       }
       span {
-        font: normal 700 1rem/11.72% "Microsoft Yahei";
+        font: normal 700 1rem/11.72% "Microsoft YaHei";
       }
     }
     .mine-user--info {

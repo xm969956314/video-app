@@ -47,6 +47,7 @@
     </div>
     <div class="register-operate text-center">
       <a href="javascript:;"
+         class="van-button"
          @click="submit">注册并登录</a>
     </div>
   </div>
@@ -148,23 +149,24 @@ export default {
     padding: 0 4%;
   }
   .register-nav {
-    flex-basis: 15%;
+    flex-basis: 12%;
     box-sizing: border-box;
-    border-bottom: 1px solid black;
+    // border-bottom: 1px solid black;
     background: url("../../assets/gradual-bg.png") no-repeat scroll center;
     background-size: 100% 100%;
-    padding-top: 2.5rem;
+    padding-top: 1.5rem;
     position: relative;
     a {
       position: absolute;
-      top: 2.4rem;
+      top: 1.4rem;
       left: 0.2rem;
       .register-nav--icon {
         font-size: 1.7rem;
       }
     }
     span {
-      font: normal 700 1rem/11.72% "Microsoft Yahei";
+      color: #333;
+      font: normal 700 1rem/11.72% "Microsoft YaHei";
     }
   }
   .register-logo {
@@ -192,9 +194,13 @@ export default {
         background-image: url("../../assets/user-icon.png")
       }
       &.register-form--icon-pwd{
+        height: 1.2rem;
+        width: 1rem;
         background-image: url("../../assets/pwd-icon.png")
       }
       &.register-form--icon-phone{
+        height: 1.2rem;
+        width: 0.8rem;
         background-image: url("../../assets/phone-icon.png")
       }
     }
@@ -202,8 +208,17 @@ export default {
   .register-operate {
     margin-top: 1.3rem;
     a {
-      font: normal 500 1rem "Microsoft Yahei";
+      width: 40%;
+      height: 2.1rem;
+      font: normal 500 1rem/2.1rem "Microsoft YaHei";
       color: #333;
+      outline: none;
+      border: none;
+      display: inline-block;
+      box-sizing: border-box;
+      border-radius: 0.4rem;
+      background: url("../../assets/gradual-bg.png") no-repeat scroll center;
+      background-size: 100% 100%;
     }
   }
 }

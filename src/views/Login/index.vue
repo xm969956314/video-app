@@ -109,24 +109,25 @@ export default {
     padding: 0 4%;
   }
   .login-nav {
-    flex-basis: 15%;
+    flex-basis: 12%;
     box-sizing: border-box;
-    border-bottom: 1px solid black;
+    // border-bottom: 1px solid black;
     background: url("../../assets/gradual-bg.png") no-repeat scroll center;
     background-size: 100% 100%;
-    padding-top: 2.5rem;
+    padding-top: 1.5rem;
     position: relative;
     letter-spacing: 1px;
     a {
       position: absolute;
-      top: 2.4rem;
+      top: 1.4rem;
       left: 0.2rem;
       .login-nav--icon {
         font-size: 1.7rem;
       }
     }
     span {
-      font: normal 700 1rem/11.72% "Microsoft Yahei";
+      color: #333;
+      font: normal 700 1rem/11.72% "Microsoft YaHei";
     }
   }
   .login-logo {
@@ -142,7 +143,7 @@ export default {
       position: absolute;
       right: 3.3%;
       top: 6%;
-      font: normal 500 0.8rem "Microsoft Yahei";
+      font: normal 500 0.8rem "Microsoft YaHei";
       color: #000;
     }
   }
@@ -161,10 +162,9 @@ export default {
         background-image: url("../../assets/user-icon.png")
       }
       &.login-form--icon-pwd{
+        height: 1.2rem;
+        width: 1rem;
         background-image: url("../../assets/pwd-icon.png")
-      }
-      &.login-form--icon-phone{
-        background-image: url("../../assets/phone-icon.png")
       }
     }
   }
@@ -178,7 +178,7 @@ export default {
       width: 38%;
       height: 2.1rem;
       text-align: center;
-      font: normal 500 0.9rem/2rem "Microsoft Yahei";
+      font: normal 500 0.9rem/2rem "Microsoft YaHei";
       color: #333;
       border-radius: 0.4rem;
       &:nth-child(1) {

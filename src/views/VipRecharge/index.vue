@@ -4,21 +4,18 @@
     <div class="vrecharge-user">
       <div class="vrecharge-user--title text-center">
         <a href="javascript:;" @click="goback">
-          <van-icon name="arrow-left"
-                    color="#fff"
-                    class="vrecharge-user--icon" /></a>
+          <van-icon name="arrow-left" color="#fff" class="vrecharge-user--icon" />
+        </a>
         <span>VIP会员充值</span>
       </div>
       <div class="vrecharge-user--info clearfix">
         <div class="vrecharge-user--info-img">
-
           <!-- <img :src="" alt="" srcset=""> -->
         </div>
         <div class="vrecharge-user--info-detail">
           <div class="detail-name">{{user.name}}</div>
           <div class="detail-vip">
-            <span v-if="user.vip"
-                  style="color: #ebc375;"></span>
+            <span v-if="user.vip" style="color: #ebc375;">VIP</span>
             <span v-else>您当前未开通VIP</span>
           </div>
         </div>
@@ -27,14 +24,76 @@
     <!-- vip 选择套餐 进行付款 -->
     <div class="vrecharge-package">
       <h5>套餐选择</h5>
+      <div class="van-tabs van-tabs--line">
+        <div class="van-tabs__wrap van-tabs__wrap--scrollable van-hairline--top-bottom">
+          <ul role="tablist" class="van-tabs__nav van-tabs__nav--line">
+            <li
+              v-for="(item, i) in packageList"
+              :key="i"
+              class="van-tab"
+              style="flex-basis: 29%;"
+              :class="{'active': currentPackage == item}"
+              @click="choosePackage(item, i)"
+            >
+              <div class="vrecharge-package--name">{{item.name}}</div>
+              <div class="vrecharge-package--price">
+                <span>￥</span>
+                <span>{{item.price}}</span>
+              </div>
+              <!-- 新用户专享 -->
+              <div class="vrecharge-package--newuser" v-if="item.isNewUser">新用户专享</div>
+            </li>
+            <li
+              v-for="(item, i) in packageList"
+              :key="i"
+              class="van-tab"
+              style="flex-basis: 29%;"
+              :class="{'active': currentPackage == item}"
+              @click="choosePackage(item, i)"
+            >
+              <div class="vrecharge-package--name">{{item.name}}</div>
+              <div class="vrecharge-package--price">
+                <span>￥</span>
+                <span>{{item.price}}</span>
+              </div>
+              <!-- 新用户专享 -->
+              <div class="vrecharge-package--newuser" v-if="item.isNewUser">新用户专享</div>
+            </li>
+            <!-- <div role="tab" aria-selected="true" class="van-tab" style="flex-basis: 29%;">
+              <span class="van-tab__text">言情</span>
+            </div>
+            <div role="tab" class="van-tab" style="flex-basis: 29%;">
+              <span class="van-tab__text">玄幻1</span>
+            </div>
+            <div role="tab" class="van-tab" style="flex-basis: 29%;">
+              <span class="van-tab__text">玄幻2</span>
+            </div>
+            <div role="tab" class="van-tab" style="flex-basis: 29%;">
+              <span class="van-tab__text">玄幻3</span>
+            </div>
+            <div role="tab" class="van-tab" style="flex-basis: 29%;">
+              <span class="van-tab__text">玄幻4</span>
+            </div>
+            <div role="tab" class="van-tab" style="flex-basis: 29%;">
+              <span class="van-tab__text">玄幻5</span>
+            </div>
+            <div role="tab" class="van-tab" style="flex-basis: 29%;">
+              <span class="van-tab__text">玄幻6</span>
+            </div>-->
+          </ul>
+        </div>
+      </div>
       <ul ref="packageUl">
-        <li v-for="(item, i) in packageList"
-            :key="i"
-            :class="{'active': currentPackage == item}"
-            @click="choosePackage(item, i)">
+        <li
+          v-for="(item, i) in packageList"
+          :key="i"
+          :class="{'active': currentPackage == item}"
+          @click="choosePackage(item, i)"
+        >
           <div class="vrecharge-package--name">{{item.name}}</div>
           <div class="vrecharge-package--price">
-            <span>￥</span><span>{{item.price}}</span>
+            <span>￥</span>
+            <span>{{item.price}}</span>
           </div>
           <!-- 新用户专享 -->
           <div class="vrecharge-package--newuser" v-if="item.isNewUser">新用户专享</div>
@@ -46,7 +105,8 @@
       <h5>会员特权</h5>
       <div class="vrecharge-member--pay text-center">
         <a href="javascript:;" @click="immediatePayment">
-          <span>立即支付</span><span class="vrecharge-member--pay-save">(已节省{{currentPackage.save}}元)</span>
+          <span>立即支付</span>
+          <span class="vrecharge-member--pay-save">(已节省{{currentPackage.save}}元)</span>
         </a>
       </div>
     </div>
@@ -58,25 +118,29 @@ export default {
   name: 'VipRecharge',
   data () {
     return {
-      packageList: [{
-        name: '连续包月VIP',
-        price: '9.9',
-        isNewUser: true,
-        save: 5
-      }, {
-        name: '季卡VIP',
-        price: '30',
-        isNewUser: false,
-        save: 16
-      }, {
-        name: '半年VIP',
-        price: '58',
-        isNewUser: false,
-        save: 33
-      }], // 套餐列表
+      packageList: [
+        {
+          name: '连续包月VIP',
+          price: '9.9',
+          isNewUser: true,
+          save: 5
+        },
+        {
+          name: '季卡VIP',
+          price: '30',
+          isNewUser: false,
+          save: 16
+        },
+        {
+          name: '半年VIP',
+          price: '58',
+          isNewUser: false,
+          save: 33
+        }
+      ], // 套餐列表
       user: {
         name: '少女心小仙女',
-        vip: this.$cookies.get('vip')
+        vip: this.$cookies.get('vip') || 3
       },
       currentPackage: {}
     }
@@ -114,14 +178,14 @@ export default {
   }
   /* vip user-info */
   .vrecharge-user {
-    flex-basis: 28%;
+    flex-basis: 22%;
     box-sizing: border-box;
-    border-bottom: 1px solid black;
-    background: url("../../assets/tabbar/header-bg.png") no-repeat scroll center;
+    // border-bottom: 1px solid black;
+    background: url("../../assets/vip-bg.png") no-repeat scroll center;
     background-size: 100% 100%;
     .vrecharge-user--title {
-      height: 11.72%;
-      margin: 9.2% 0 9%;
+      height: 2rem;
+      margin: 6.2% 0 3%;
       position: relative;
       a {
         position: absolute;
@@ -132,7 +196,8 @@ export default {
         }
       }
       span {
-        font: normal 700 1rem/11.72% "Microsoft Yahei";
+        color: #333;
+        font: normal 700 1rem/2rem "Microsoft YaHei";
       }
     }
     .vrecharge-user--info {
@@ -163,10 +228,11 @@ export default {
   }
   /* vip user-info */
   .vrecharge-package {
-    flex-basis: 32.2%;
+    flex-basis: 35.2%;
     margin-bottom: 1.9%;
     h5 {
       font-size: 1rem;
+      color: #333;
       margin: 0.7rem 0 1.1rem;
     }
     ul {
@@ -180,7 +246,7 @@ export default {
         position: relative;
         box-sizing: border-box;
         margin-right: 0.4rem;
-        &:nth-last-child(){
+        &:nth-last-child() {
           margin: 0;
         }
         &.active {
@@ -202,38 +268,39 @@ export default {
           line-height: 5.4rem;
           color: #98752d;
           border-radius: 0 0 0.36rem 0.36rem;
-          span{
-            &:nth-child(1){
+          span {
+            &:nth-child(1) {
               font-size: 2rem;
             }
-            &:nth-child(2){
+            &:nth-child(2) {
               font-size: 3rem;
             }
           }
         }
         /* vip user-info */
-        .vrecharge-package--newuser{
+        .vrecharge-package--newuser {
           position: absolute;
           left: 0;
           top: -0.7rem;
           height: 1.4rem;
           width: 5.6rem;
-          background: url("../../assets/exclusive4newusers.png") no-repeat scroll
-              center;
+          background: url("../../assets/exclusive4newusers.png") no-repeat
+            scroll center;
           background-size: 100% 100%;
           color: #333;
-          font: normal 400 0.8rem/1.4rem 'Microsoft Yahei';
+          font: normal 400 0.8rem/1.4rem "Microsoft YaHei";
         }
       }
     }
   }
   /* vip user-info */
   .vrecharge-member {
-    flex-basis: 37.91%;
+    flex-basis: 40.91%;
     position: relative;
     h5 {
       font-size: 1rem;
       margin-top: 1rem;
+      color: #333;
     }
     /* vip user-info */
     .vrecharge-member--pay {
@@ -241,20 +308,21 @@ export default {
       height: 2.6rem;
       border-radius: 1.3rem;
       position: absolute;
-      bottom: 12%;
+      bottom: 14%;
       left: 10%;
       width: 80%;
-      a{
+      a {
         display: block;
         width: 100%;
         height: 100%;
-        font: normal 500 1rem/2.6rem 'Microsoft Yahei';
+        font: normal 500 1rem/2.6rem "Microsoft YaHei";
         color: #333;
-        &:hover, &:active{
+        &:hover,
+        &:active {
           color: #333;
         }
         /* vip user-info */
-        .vrecharge-member--pay-save{
+        .vrecharge-member--pay-save {
           font-size: 0.8rem;
           display: inline-block;
           transform: translateY(-0.1rem);

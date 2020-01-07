@@ -279,7 +279,7 @@ export default {
       text-align: center;
       height: 1.4rem;
       border-radius: 0.2rem;
-      font: normal 400 0.9rem/1.44rem "Microsoft Yahei";
+      font: normal 400 0.9rem/1.44rem "Microsoft YaHei";
     }
   }
   /* item 列表 */
@@ -313,7 +313,7 @@ export default {
         h4 {
           color: #333;
           flex-basis: 70%;
-          font: normal 400 0.96rem/1 "Microsoft Yahei";
+          font: normal 400 0.96rem/1 "Microsoft YaHei";
         }
         /* 右侧底部详情信息 */
         .boutique-item--detail {
@@ -324,7 +324,7 @@ export default {
           /* 观看次数 */
           .detail-viewing {
             color: #808080;
-            font: normal 400 0.7rem/1.2rem "Microsoft Yahei";
+            font: normal 400 0.7rem/1.2rem "Microsoft YaHei";
             // margin: 0 0.3rem 0 0.4rem;
             margin: 0 0.2rem 0 0.2rem;
             .detail-viewing--img {
@@ -341,7 +341,7 @@ export default {
           .detail-favorable {
             color: #f87074;
             float: left;
-            font: normal 400 0.7rem/1.2rem "Microsoft Yahei";
+            font: normal 400 0.7rem/1.2rem "Microsoft YaHei";
           }
         }
         /* 加入会员 */
@@ -352,7 +352,7 @@ export default {
           width: 100%;
           .boutique-item--member-join {
             color: #675928;
-            font: normal 700 0.8rem "Microsoft Yahei";
+            font: normal 700 0.8rem "Microsoft YaHei";
           }
         }
       }

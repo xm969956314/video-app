@@ -187,6 +187,10 @@ export default {
         .van-search__content {
           background-color: rgba(255, 255, 255, 0.35);
           border: 1px solid #794b53;
+          .van-cell{
+            padding: 4px 8px 4px 0;
+            line-height: 20px;
+          }
           .van-icon-search {
             color: #fff;
           }
@@ -211,8 +215,8 @@ export default {
       a {
         background: url() no-repeat scroll center;
         background-size: 100% 100%;
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 1.3rem;
+        height: 1.3rem;
         position: relative;
         // margin-top: 50%;
         transform: translateY(22%);
@@ -279,7 +283,7 @@ export default {
       text-align: center;
       height: 1.4rem;
       border-radius: 0.2rem;
-      font: normal 400 0.9rem/1.44rem "Microsoft Yahei";
+      font: normal 400 0.9rem/1.44rem "Microsoft YaHei";
     }
   }
   /* item 列表 */
@@ -313,7 +317,7 @@ export default {
         h4 {
           color: #333;
           flex-basis: 70%;
-          font: normal 400 0.96rem/1 "Microsoft Yahei";
+          font: normal 400 0.96rem/1 "Microsoft YaHei";
         }
         /* 右侧底部详情信息 */
         .hot-item--detail {
@@ -324,7 +328,7 @@ export default {
           /* 观看次数 */
           .detail-viewing {
             color: #808080;
-            font: normal 400 0.7rem/1.2rem "Microsoft Yahei";
+            font: normal 400 0.7rem/1.2rem "Microsoft YaHei";
             // margin: 0 0.3rem 0 0.4rem;
             margin: 0 0.2rem 0 0.2rem;
             .detail-viewing--img {
@@ -341,7 +345,7 @@ export default {
           .detail-favorable {
             color: #f87074;
             float: left;
-            font: normal 400 0.7rem/1.2rem "Microsoft Yahei";
+            font: normal 400 0.7rem/1.2rem "Microsoft YaHei";
           }
         }
         /* 加入会员 */
@@ -352,7 +356,7 @@ export default {
           width: 100%;
           .hot-item--member-join {
             color: #675928;
-            font: normal 700 0.8rem "Microsoft Yahei";
+            font: normal 700 0.8rem "Microsoft YaHei";
           }
         }
       }
