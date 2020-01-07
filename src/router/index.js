@@ -35,10 +35,10 @@ export default new Router({
         import('@/views/Mine')
     }]
   }, {
-    path: '/Vip',
-    name: 'Vip',
+    path: '/VipRecharge',
+    name: 'VipRecharge',
     component: () =>
-      import('@/views/Vip')
+      import('@/views/VipRecharge')
   }, {
     path: '/Login',
     name: '登录',

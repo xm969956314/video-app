@@ -12,13 +12,15 @@ export default {
 
 <style>
 #app {
-  padding-bottom: 3rem;
+  /* padding-bottom: 3rem; */
+  box-sizing: border-box;
   /* chrome 和Safari 隐藏滚动条但能滚动*/
   /* div::-webkit-scrollbar { width: 0 !important; } */
   /* IE 10+ */
   -ms-overflow-style: none;
   /* Firefox */
   overflow: -moz-scrollbars-none;
+  height: 100%;
 }
 /* chrome 和Safari 隐藏滚动条但能滚动*/
 #app::-webkit-scrollbar{

@@ -7,8 +7,9 @@
     text-align: center;
 }
 
-.text-center {
-    text-align: center;
+html,
+body {
+    height: 100%;
 }
 
 ul,
@@ -29,5 +30,19 @@ a {
         content: " ";
         clear: both;
         height: 0;
+    }
+}
+
+.custom-form {
+    .van-cell-group {
+        .van-cell {
+            border-bottom: 1px solid #c2c2c2;
+            &:nth-child(1) {
+                border-top: 1px solid #c2c2c2;
+            }
+            &:after {
+                content: none;
+            }
+        }
     }
 }

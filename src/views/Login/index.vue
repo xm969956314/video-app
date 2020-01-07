@@ -1,25 +1,40 @@
 <template>
-  <div>
-    <van-cell-group>
-      <van-field v-model="account"
-                 placeholder="请输入用户名"
-                 label="用户名"
-                 left-icon="contact"
-                 required
-                 :error-message="accountErrMsg"
-                 @blur="validAccount" />
-      <van-field v-model="pwd"
-                 type="password"
-                 label="密码"
-                 placeholder="请输入密码"
-                 required
-                 :error-message="pwdErrMsg"
-                 @blur="validPwd" />
-      <div>
-        <button @click="login">登录</button>
-        <a href="javascript:;" @click="forgetPwd">忘记密码?</a>
-      </div>
-    </van-cell-group>
+  <div class="login">
+    <div class="login-nav text-center">
+      <a href="javascript:;">
+        <van-icon name="arrow-left"
+                  color="#fff"
+                  class="login-nav--icon" /></a>
+      <span>注册</span>
+    </div>
+    <div class="login-logo text-center">
+      <span>LOGO</span>
+      <a href="javascript:;" class="login-logo--forget">忘记密码?</a>
+    </div>
+    <div class="login-form custom-form">
+      <van-cell-group>
+        <van-field v-model="account"
+                   placeholder="请输入用户名"
+                   left-icon="contact"
+                   :label-width="10"
+                   :error-message="accountErrMsg"
+                   @blur="validAccount">
+          <span class="login-form--icon-user" slot="left-icon"></span>
+        </van-field>
+        <van-field v-model="pwd"
+                   type="password"
+                   :label-width="10"
+                   placeholder="请输入密码"
+                   :error-message="pwdErrMsg"
+                   @blur="validPwd">
+          <span class="login-form--icon-pwd" slot="left-icon"></span>
+        </van-field>
+      </van-cell-group>
+    </div>
+    <div class="login-operate text-center">
+      <button class="van-button" @click="register">注册</button>
+      <button class="van-button" @click="login">登录</button>
+    </div>
   </div>
 </template>
 
@@ -28,15 +43,14 @@ export default {
   name: 'Login',
   data: function () {
     return {
-      form: {
-        account: '',
-        pwd: '',
-        accountErrMsg: '',
-        pwdErrMsg: ''
-      }
+      account: '',
+      pwd: '',
+      accountErrMsg: '',
+      pwdErrMsg: ''
     }
   },
   methods: {
+    // 登陆
     login () {
       if (this.validAccount() && this.validPwd()) {
         const that = this
@@ -50,6 +64,10 @@ export default {
     forgetPwd () {
       // 忘记密码
       this.$toast.fail('Login Success!')
+    },
+    // 注册
+    register () {
+      this.$router.push('/login')
     },
     // 校验账号
     validAccount () {
@@ -73,5 +91,98 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.login {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  > div {
+    padding: 0 4%;
+  }
+  .login-nav {
+    flex-basis: 15%;
+    box-sizing: border-box;
+    border-bottom: 1px solid black;
+    background: url("../../assets/gradual-bg.png") no-repeat scroll center;
+    background-size: 100% 100%;
+    padding-top: 2.5rem;
+    position: relative;
+    a {
+      position: absolute;
+      top: 2.4rem;
+      left: 0.2rem;
+      .login-nav--icon {
+        font-size: 1.7rem;
+      }
+    }
+    span {
+      font: normal 700 1rem/11.72% "Microsoft Yahei";
+    }
+  }
+  .login-logo {
+    flex-basis: 16%;
+    position: relative;
+    span{
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .login-logo--forget{
+      position: absolute;
+      right: 3.3%;
+      top: 6%;
+      font: normal 500 0.8rem "Microsoft Yahei";
+      color: #000;
+    }
+  }
+  .login-form {
+    padding: 0;
+    background-color: #fff;
+    [class*="login-form--icon"]{
+      background: url() no-repeat scroll center;
+      background-size: 100% 100%;
+      display: block;
+      height: 1.1rem;
+      width: 1.1rem;
+      margin-right: 0.2rem;
+      transform: translateY(0.24rem);
+      &.login-form--icon-user{
+        background-image: url("../../assets/user-icon.png")
+      }
+      &.login-form--icon-pwd{
+        background-image: url("../../assets/pwd-icon.png")
+      }
+      &.login-form--icon-phone{
+        background-image: url("../../assets/phone-icon.png")
+      }
+    }
+  }
+  .login-operate {
+    margin-top: 2.8rem;
+    button{
+      outline: none;
+      border: none;
+      display: inline-block;
+      box-sizing: border-box;
+      width: 38%;
+      height: 2.1rem;
+      text-align: center;
+      font: normal 500 0.9rem/2rem "Microsoft Yahei";
+      color: #333;
+      border-radius: 0.4rem;
+      &:nth-child(1) {
+        border: 1px solid #999;
+        background-color: #fff;
+        margin-right: 6%;
+      }
+      &:nth-child(2) {
+        background: url("../../assets/gradual-bg.png") no-repeat scroll center;
+        background-size: 100% 100%;
+      }
+    }
+
+  }
+}
 </style>

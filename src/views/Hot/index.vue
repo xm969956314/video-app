@@ -112,7 +112,7 @@ export default {
       isLoading: false, // 下拉刷新
       isUpLoading: false, // 上拉加载
       upFinished: false, // 上拉加载完毕
-      offset: 120 // 滚动条与底部距离小于 offset 时触发load事件
+      offset: 150 // 滚动条与底部距离小于 offset 时触发load事件
     }
   },
   mounted () {
@@ -282,7 +282,7 @@ export default {
   /* item 列表 */
   .hot-item {
     background-color: #f5f5f5;
-    padding: 0 0.9rem;
+    padding: 0 0.9rem 0.2rem;
     .hot-item--info {
       display: flex;
       height: 7rem;

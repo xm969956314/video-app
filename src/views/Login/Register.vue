@@ -1,37 +1,54 @@
 <template>
-  <div>
-    <van-cell-group>
-      <van-field v-model="account"
-                 placeholder="请输入用户名"
-                 label="用户名"
-                 left-icon="contact"
-                 required
-                 :error-message="accountErrMsg"
-                 @blur="validAccount" />
-      <van-field v-model="pwd"
-                 type="password"
-                 label="密码"
-                 placeholder="请输入密码"
-                 required
-                 :error-message="pwdErrMsg"
-                 @blur="validPwd" />
-      <van-field v-model="confirmPwd"
-                 type="password"
-                 label="确认密码"
-                 placeholder="请再次确认密码"
-                 required
-                 :error-message="confirmPwdErrMsg"
-                 @blur="validConfirmPwd" />
-      <van-field v-model="phone"
-                 label="手机号"
-                 placeholder="请输入手机号"
-                 :error-message="phoneErrMsg"
-                 @blur="validPhone" />
-      <div>
-        <button @click="submit">提交</button>
-        <button @click="clear">清空</button>
-      </div>
-    </van-cell-group>
+  <div class="register">
+    <div class="register-nav text-center">
+      <a href="javascript:;">
+        <van-icon name="arrow-left"
+                  color="#fff"
+                  class="register-nav--icon" /></a>
+      <span>注册</span>
+    </div>
+    <div class="register-logo text-center">
+      <span>LOGO</span>
+    </div>
+    <div class="register-form custom-form">
+      <van-cell-group>
+        <van-field v-model="account"
+                   placeholder="请输入用户名"
+                   left-icon="contact"
+                   :label-width="10"
+                   :error-message="accountErrMsg"
+                   @blur="validAccount">
+          <span class="register-form--icon-user" slot="left-icon"></span>
+        </van-field>
+        <van-field v-model="pwd"
+                   type="password"
+                   :label-width="10"
+                   placeholder="请输入密码"
+                   :error-message="pwdErrMsg"
+                   @blur="validPwd">
+          <span class="register-form--icon-pwd" slot="left-icon"></span>
+        </van-field>
+        <van-field v-model="confirmPwd"
+                   type="password"
+                   :label-width="10"
+                   placeholder="请再次确认密码"
+                   :error-message="confirmPwdErrMsg"
+                   @blur="validConfirmPwd">
+          <span class="register-form--icon-pwd" slot="left-icon"></span>
+        </van-field>
+        <van-field v-model="phone"
+                   :label-width="10"
+                   placeholder="请输入手机号码（选填）"
+                   :error-message="phoneErrMsg"
+                   @blur="validPhone">
+          <span class="register-form--icon-phone" slot="left-icon"></span>
+        </van-field>
+      </van-cell-group>
+    </div>
+    <div class="register-operate text-center">
+      <a href="javascript:;"
+         @click="submit">注册并登录</a>
+    </div>
   </div>
 </template>
 
@@ -115,5 +132,73 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.register {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  > div {
+    padding: 0 4%;
+  }
+  .register-nav {
+    flex-basis: 15%;
+    box-sizing: border-box;
+    border-bottom: 1px solid black;
+    background: url("../../assets/gradual-bg.png") no-repeat scroll center;
+    background-size: 100% 100%;
+    padding-top: 2.5rem;
+    position: relative;
+    a {
+      position: absolute;
+      top: 2.4rem;
+      left: 0.2rem;
+      .register-nav--icon {
+        font-size: 1.7rem;
+      }
+    }
+    span {
+      font: normal 700 1rem/11.72% "Microsoft Yahei";
+    }
+  }
+  .register-logo {
+    flex-basis: 16%;
+    position: relative;
+    span{
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%,-50%);
+    }
+  }
+  .register-form {
+    padding: 0;
+    background-color: #fff;
+    [class*="register-form--icon"]{
+      background: url() no-repeat scroll center;
+      background-size: 100% 100%;
+      display: block;
+      height: 1.1rem;
+      width: 1.1rem;
+      margin-right: 0.2rem;
+      transform: translateY(0.24rem);
+      &.register-form--icon-user{
+        background-image: url("../../assets/user-icon.png")
+      }
+      &.register-form--icon-pwd{
+        background-image: url("../../assets/pwd-icon.png")
+      }
+      &.register-form--icon-phone{
+        background-image: url("../../assets/phone-icon.png")
+      }
+    }
+  }
+  .register-operate {
+    margin-top: 1.3rem;
+    a {
+      font: normal 500 1rem "Microsoft Yahei";
+      color: #333;
+    }
+  }
+}
 </style>
