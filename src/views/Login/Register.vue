@@ -1,7 +1,7 @@
 <template>
   <div class="register">
     <div class="register-nav text-center">
-      <a href="javascript:;">
+      <a href="javascript:;" @click="goback">
         <van-icon name="arrow-left"
                   color="#fff"
                   class="register-nav--icon" /></a>
@@ -74,6 +74,8 @@ export default {
         const that = this
         window.setTimeout(() => {
           that.$toast.success('Register Success!')
+          that.$cookies.set('userName', that.account)
+          that.$router.push('/Home/Hot')
         }, 20)
         // this.$axios.post('/xxx/').then(res => { console.log(res) })
       } else {
@@ -89,10 +91,10 @@ export default {
     },
     // 校验账号
     validAccount () {
-      const reg = /^[a-zA-Z]{1}[A-Za-z0-9_]{5,29}/
+      const reg = /^[a-zA-Z]{1}[A-Za-z0-9_]{4,29}/
       this.accountErrMsg = ''
       if (!reg.test(this.account)) {
-        this.accountErrMsg = '必须是至少6位以英文字母开头'
+        this.accountErrMsg = '必须是至少5位以英文字母开头'
       }
       return !this.accountErrMsg
     },
@@ -127,6 +129,10 @@ export default {
         this.phoneErrMsg = '请输入正确的手机号'
       }
       return !this.phoneErrMsg
+    },
+    // 回退到上一个界面
+    goback () {
+      window.history.back(-1)
     }
   }
 }

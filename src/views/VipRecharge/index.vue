@@ -3,7 +3,7 @@
     <!-- vip 充值用户信息 -->
     <div class="vrecharge-user">
       <div class="vrecharge-user--title text-center">
-        <a href="javascript:;">
+        <a href="javascript:;" @click="goback">
           <van-icon name="arrow-left"
                     color="#fff"
                     class="vrecharge-user--icon" /></a>
@@ -92,6 +92,10 @@ export default {
     // 立即支付
     immediatePayment () {
       this.$toast('正在支付！')
+    },
+    // 回退到上一个界面
+    goback () {
+      window.history.back(-1)
     }
   }
 }

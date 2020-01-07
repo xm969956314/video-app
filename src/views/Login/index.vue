@@ -1,15 +1,15 @@
 <template>
   <div class="login">
     <div class="login-nav text-center">
-      <a href="javascript:;">
+      <a href="javascript:;" @click="goback">
         <van-icon name="arrow-left"
                   color="#fff"
                   class="login-nav--icon" /></a>
-      <span>注册</span>
+      <span>账号登录</span>
     </div>
     <div class="login-logo text-center">
       <span>LOGO</span>
-      <a href="javascript:;" class="login-logo--forget">忘记密码?</a>
+      <a href="javascript:;" class="login-logo--forget" @click="forgetPwd">忘记密码?</a>
     </div>
     <div class="login-form custom-form">
       <van-cell-group>
@@ -26,7 +26,8 @@
                    :label-width="10"
                    placeholder="请输入密码"
                    :error-message="pwdErrMsg"
-                   @blur="validPwd">
+                   @blur="validPwd"
+                   @keyup.enter.native="login">
           <span class="login-form--icon-pwd" slot="left-icon"></span>
         </van-field>
       </van-cell-group>
@@ -55,7 +56,9 @@ export default {
       if (this.validAccount() && this.validPwd()) {
         const that = this
         window.setTimeout(() => {
+          that.$cookies.set('userName', that.account)
           that.$toast.success('Login Success!')
+          that.$router.push('/Home/Hot')
         }, 20)
       } else {
         this.$toast.fail('亲，请输入有效账号或密码!')
@@ -63,18 +66,19 @@ export default {
     },
     forgetPwd () {
       // 忘记密码
-      this.$toast.fail('Login Success!')
+      this.$cookies.remove('userName')
+      this.$toast.fail('Forget Password!')
     },
     // 注册
     register () {
-      this.$router.push('/login')
+      this.$router.push('/register')
     },
     // 校验账号
     validAccount () {
-      const reg = /^[a-zA-Z]{1}[A-Za-z0-9_]{5,29}/
+      const reg = /^[a-zA-Z]{1}[A-Za-z0-9_]{4,29}/
       this.accountErrMsg = ''
       if (!reg.test(this.account)) {
-        this.accountErrMsg = '必须是至少6位以英文字母开头'
+        this.accountErrMsg = '必须是至少5位以英文字母开头'
       }
       return !this.accountErrMsg
     },
@@ -86,6 +90,10 @@ export default {
         this.pwdErrMsg = '至少5位只能是字母、数字或 _ 或 $ 或 .'
       }
       return !this.pwdErrMsg
+    },
+    // 回退到上一个界面
+    goback () {
+      window.history.back(-1)
     }
   }
 }
@@ -108,6 +116,7 @@ export default {
     background-size: 100% 100%;
     padding-top: 2.5rem;
     position: relative;
+    letter-spacing: 1px;
     a {
       position: absolute;
       top: 2.4rem;

@@ -146,8 +146,11 @@ export default {
     joinMember (item, i) {
       // 加入会员
       console.log(item, i)
+      // 如果登录跳转至 vip 套餐支付，没有则跳转至登录页
       if (!this.userInfo.name) {
-        this.$router.push('/Register')
+        this.$router.push('/Login')
+      } else {
+        this.$router.push('/VipRecharge')
       }
     },
     onLoad () {
