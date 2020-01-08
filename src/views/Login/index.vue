@@ -7,16 +7,17 @@
                   class="login-nav--icon" /></a>
       <span>账号登录</span>
     </div>
-    <div class="login-logo text-center">
+    <div class="login-logo text-center log">
       <span>LOGO</span>
       <a href="javascript:;" class="login-logo--forget" @click="forgetPwd">忘记密码?</a>
     </div>
     <div class="login-form custom-form">
-      <van-cell-group>
+      <van-cell-group class="bg-tran">
         <van-field v-model="account"
                    placeholder="请输入用户名"
                    left-icon="contact"
                    :label-width="10"
+                   class="bg-tran"
                    :error-message="accountErrMsg"
                    @blur="validAccount">
           <span class="login-form--icon-user" slot="left-icon"></span>
@@ -26,6 +27,7 @@
                    :label-width="10"
                    placeholder="请输入密码"
                    :error-message="pwdErrMsg"
+                   class="bg-tran"
                    @blur="validPwd"
                    @keyup.enter.native="login">
           <span class="login-form--icon-pwd" slot="left-icon"></span>
@@ -127,7 +129,7 @@ export default {
     }
     span {
       color: #333;
-      font: normal 700 1rem/11.72% "Microsoft YaHei";
+      font: normal 700 1.1rem/11.72% "黑体";
     }
   }
   .login-logo {
@@ -148,8 +150,8 @@ export default {
     }
   }
   .login-form {
-    padding: 0;
-    background-color: #fff;
+    padding: 0 6%;
+    // background-color: #fff;
     [class*="login-form--icon"]{
       background: url() no-repeat scroll center;
       background-size: 100% 100%;

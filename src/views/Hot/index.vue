@@ -63,8 +63,7 @@
                     <span class="detail-viewing--times">{{item.viewingTimes}}万</span>
                   </div>
                   <div class="detail-favorable">
-                    <span>好评率 :</span>
-                    <span>100%</span>
+                    <span>好评率:</span><span>100%</span>
                   </div>
                 </div>
                 <div class="hot-item--member text-center">
@@ -328,7 +327,7 @@ export default {
           /* 观看次数 */
           .detail-viewing {
             color: #808080;
-            font: normal 400 0.7rem/1.2rem "Microsoft YaHei";
+            font: normal 400 0.8rem/1.2rem "黑体";
             // margin: 0 0.3rem 0 0.4rem;
             margin: 0 0.2rem 0 0.2rem;
             .detail-viewing--img {
@@ -345,7 +344,7 @@ export default {
           .detail-favorable {
             color: #f87074;
             float: left;
-            font: normal 400 0.7rem/1.2rem "Microsoft YaHei";
+            font: normal 400 0.8rem/1.2rem "黑体";
           }
         }
         /* 加入会员 */

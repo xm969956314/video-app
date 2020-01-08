@@ -34,15 +34,24 @@ a {
 }
 
 .custom-form {
+    .van-hairline--top-bottom::after, .van-hairline-unset--top-bottom::after{
+        border: none;
+    }
     .van-cell-group {
         .van-cell {
             border-bottom: 1px solid #c2c2c2;
-            &:nth-child(1) {
-                border-top: 1px solid #c2c2c2;
-            }
             &:after {
                 content: none;
             }
         }
     }
+}
+.log{
+    font: normal 1.2rem "黑体";
+}
+.ff-hei{
+    font-family: "黑体";
+}
+.bg-tran{
+    background-color: transparent !important;
 }

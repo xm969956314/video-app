@@ -13,9 +13,14 @@
           <!-- <img :src="" alt="" srcset=""> -->
         </div>
         <div class="vrecharge-user--info-detail">
-          <div class="detail-name">{{user.name}}</div>
+          <div class="detail-name">
+            <span>{{user.name}}</span>
+            <span class="info-detail--icon"></span>
+          </div>
           <div class="detail-vip">
-            <span v-if="user.vip" style="color: #ebc375;">VIP</span>
+            <span v-if="user.vip" class="ff-hei" style="color: #f7e5b7;">
+              2020年8月15号到期
+            </span>
             <span v-else>您当前未开通VIP</span>
           </div>
         </div>
@@ -34,13 +39,18 @@
               :class="{'active': currentPackage == item}"
               @click="choosePackage(item, i)"
             >
-              <div class="vrecharge-package--name">{{item.name}}</div>
-              <div class="vrecharge-package--price">
-                <span>￥</span><span>{{item.price}}</span>
+              <div class="vrecharge-package--name">
+                <span class="ff-hei">{{item.name}}</span>
               </div>
-              <div class="vrecharge-package--newuser" v-if="item.isNewUser">新用户专享</div>
+              <div class="vrecharge-package--price">
+                <div>
+                  <span>￥</span><span :class="{'small': item.price.length>=3,'mini': item.price.length>=5}">{{item.price}}</span>
+                </div>
+              </div>
+              <div class="vrecharge-package--newuser" v-if="item.isNewUser">优惠活动</div>
             </li>
           </ul>
+          <div class="vrecharge-package--scrollbar"></div>
         </div>
       </div>
       <!-- <ul ref="packageUl">
@@ -63,10 +73,18 @@
     <!-- vip 会员特权 -->
     <div class="vrecharge-member">
       <h5>会员特权</h5>
+      <div class="vrecharge-member--privilege">
+        <div v-for="item in membershipPrivileges" :key="item.title">
+          <div class="privilege-img">
+            <img :src="item.img" alt="">
+          </div>
+          <div class="text-center privilege-title">{{item.title}}</div>
+        </div>
+      </div>
       <div class="vrecharge-member--pay text-center">
         <a href="javascript:;" @click="immediatePayment">
           <span>立即支付</span>
-          <span class="vrecharge-member--pay-save">(已节省{{currentPackage.save}}元)</span>
+          <span class="vrecharge-member--pay-save">(已节省<span class="ff-hei">{{currentPackage.save}}</span>元)</span>
         </a>
       </div>
     </div>
@@ -81,7 +99,7 @@ export default {
       packageList: [
         {
           name: '连续包月VIP',
-          price: '9.9',
+          price: '10',
           isNewUser: true,
           save: 5
         },
@@ -126,6 +144,31 @@ export default {
         name: '少女心小仙女',
         vip: this.$cookies.get('vip') || 3
       },
+      membershipPrivileges: [{ // 会员特权
+        title: '高清',
+        img: require('../../assets/member-icon/HD.png')
+      }, {
+        title: '无广告',
+        img: require('../../assets/member-icon/no-advertisement.png')
+      }, {
+        title: '全站免费',
+        img: require('../../assets/member-icon/free.png')
+      }, {
+        title: '付费折扣',
+        img: require('../../assets/member-icon/discount.png')
+      }, {
+        title: '抢先看',
+        img: require('../../assets/member-icon/seen.png')
+      }, {
+        title: '尊贵标志',
+        img: require('../../assets/member-icon/exclusive.png')
+      }, {
+        title: '专属通道',
+        img: require('../../assets/member-icon/sign.png')
+      }, {
+        title: '专属客服',
+        img: require('../../assets/member-icon/customer.png')
+      }],
       currentPackage: {}
     }
   },
@@ -181,7 +224,7 @@ export default {
       }
       span {
         color: #333;
-        font: normal 700 1rem/2rem "Microsoft YaHei";
+        font: normal 700 1.1rem/2rem "黑体";
       }
     }
     .vrecharge-user--info {
@@ -207,12 +250,21 @@ export default {
         .detail-vip {
           font-size: 0.8rem;
         }
+        .info-detail--icon{
+          background: url("../../assets/member-icon/member.png") no-repeat scroll
+                  center;
+          background-size: 100% 100%;
+          display: inline-block;
+          width: 1rem;
+          height: 1rem;
+          transform: translate(0.1rem, 0.2rem);
+        }
       }
     }
   }
-  /* vip user-info */
+  /* vip package 会员套餐 */
   .vrecharge-package {
-    flex-basis: 35.2%;
+    flex-basis: 33.2%;
     margin-bottom: 1.9%;
     padding-right: 0;
     h5 {
@@ -221,20 +273,32 @@ export default {
       margin: 0.7rem 0 0.4rem;
     }
     .van-tabs {
+      [class*=van-hairline]::after{
+        border: none;
+        content: '';
+      }
       .van-tabs__wrap {
-        height: auto;
+        height: 24vh;
+        // height: 8.2rem;
+        position: relative;
         ul {
           display: flex;
-          padding: 0.7rem 0 0;
+          height: 100%;
+          box-sizing: border-box;
+          padding: 0.7rem 0 2.3vh;
+          // padding: 0.7rem 0 1rem;
+          margin-right: 0.4rem;
           li {
             flex-basis: 30%;
             border: 1px solid #b39d67;
-            border-radius: 0.4rem;
+            border-radius: 0.5rem;
             text-align: center;
             cursor: pointer;
             position: relative;
             box-sizing: border-box;
-            margin-right: 0.4rem;
+            margin-right: 0.5rem;
+            display: flex;
+            flex-direction: column;
             &:nth-last-child() {
               margin: 0;
             }
@@ -247,60 +311,123 @@ export default {
             }
             .vrecharge-package--name {
               background-color: #ebc375;
-              width: 28vw;
-              padding: 0.6rem 0;
+              font-family: "黑体";
+              width: 26.8vw;
+              flex-basis: 27%;
+              // display: flex;
+              // height: 1.6rem;
+              // line-height: 1.6rem;
+              // height: 5.4vh;
+              // line-height: 5.4vh;
+              // padding: 0.6rem 0;
               font-size: 0.9rem;
               border-radius: 0.36rem 0.36rem 0 0;
+              position: relative;
+              span{
+                position: absolute;
+                width: 6rem;
+                top: 50%;
+                transform: translate(-50%,-50%);
+              }
             }
-            /* vip user-info */
+            /* vip 套餐价格 */
             .vrecharge-package--price {
-              height: 5.4rem;
-              line-height: 5.4rem;
+              // height: 4.79rem;
+              // line-height: 4.79rem;
+              // height: 12.96vh;
+              // line-height: 12.96vh;
+              flex-basis: 73%;
+              line-height: 73%;
               color: #98752d;
               border-radius: 0 0 0.36rem 0.36rem;
+              position: relative;
+              >div{
+                position: absolute;
+                width: 100%;
+                top: 50%;
+                transform: translate(0,-50%);
+                text-align: center;
+              }
               span {
                 &:nth-child(1) {
                   font-size: 2rem;
                 }
                 &:nth-child(2) {
+                  font-family: "黑体";
                   font-size: 2.6rem;
+                  &.small{
+                    font-size: 2rem;
+                  }
+                  &.mini{
+                    font-size: 1.6rem;
+                  }
                 }
               }
             }
-            /* vip user-info */
+            /* vip 会员新用户 */
             .vrecharge-package--newuser {
               position: absolute;
-              left: 0;
-              top: -0.7rem;
-              height: 1.4rem;
-              width: 5.6rem;
+              left: -1px;
+              top: -0.8rem;
+              height: 1.2rem;
+              width: 4.8rem;
               background: url("../../assets/exclusive4newusers.png") no-repeat
                 scroll center;
               background-size: 100% 100%;
               color: #333;
-              font: normal 400 0.8rem/1.4rem "Microsoft YaHei";
+              font: normal 400 0.8rem/1.2rem "Microsoft YaHei";
             }
           }
+        }
+        .vrecharge-package--scrollbar{
+          position: absolute;
+          height: 1.7vh;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          background-color: #fff;
+          z-index: 1;
         }
       }
     }
   }
-  /* vip user-info */
+  /* vip 会员 */
   .vrecharge-member {
-    flex-basis: 40.91%;
+    flex-basis: 42.91%;
     position: relative;
     h5 {
       font-size: 1rem;
       margin-top: 1rem;
       color: #333;
     }
-    /* vip user-info */
+    /* vip 会员特权 */
+    .vrecharge-member--privilege{
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 1.5vh;
+      >div{
+        width: 25%;
+        cursor: pointer;
+        text-align: center;
+        margin-bottom: 0.4vh;
+        .privilege-img{
+          img{
+            // width: 2.2rem;
+            height: 5.4vh;
+          }
+        }
+        .privilege-title{
+          font: normal 400 0.8rem '黑体';
+        }
+      }
+    }
+    /* vip 会员立即购买*/
     .vrecharge-member--pay {
       background-image: linear-gradient(to right, #d4b978, #edd38a);
       height: 2.6rem;
       border-radius: 1.3rem;
       position: absolute;
-      bottom: 14%;
+      bottom: 8%;
       left: 10%;
       width: 80%;
       a {
@@ -313,7 +440,7 @@ export default {
         &:active {
           color: #333;
         }
-        /* vip user-info */
+        /* vip 会员保存按钮 */
         .vrecharge-member--pay-save {
           font-size: 0.8rem;
           display: inline-block;

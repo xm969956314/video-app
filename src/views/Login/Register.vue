@@ -7,15 +7,16 @@
                   class="register-nav--icon" /></a>
       <span>注册</span>
     </div>
-    <div class="register-logo text-center">
+    <div class="register-logo text-center log">
       <span>LOGO</span>
     </div>
     <div class="register-form custom-form">
-      <van-cell-group>
+      <van-cell-group class="bg-tran">
         <van-field v-model="account"
                    placeholder="请输入用户名"
                    left-icon="contact"
                    :label-width="10"
+                   class="bg-tran"
                    :error-message="accountErrMsg"
                    @blur="validAccount">
           <span class="register-form--icon-user" slot="left-icon"></span>
@@ -23,6 +24,7 @@
         <van-field v-model="pwd"
                    type="password"
                    :label-width="10"
+                   class="bg-tran"
                    placeholder="请输入密码"
                    :error-message="pwdErrMsg"
                    @blur="validPwd">
@@ -31,6 +33,7 @@
         <van-field v-model="confirmPwd"
                    type="password"
                    :label-width="10"
+                   class="bg-tran"
                    placeholder="请再次确认密码"
                    :error-message="confirmPwdErrMsg"
                    @blur="validConfirmPwd">
@@ -38,6 +41,7 @@
         </van-field>
         <van-field v-model="phone"
                    :label-width="10"
+                   class="bg-tran"
                    placeholder="请输入手机号码（选填）"
                    :error-message="phoneErrMsg"
                    @blur="validPhone">
@@ -166,7 +170,7 @@ export default {
     }
     span {
       color: #333;
-      font: normal 700 1rem/11.72% "Microsoft YaHei";
+      font: normal 700 1.1rem/11.72% "黑体";
     }
   }
   .register-logo {
@@ -180,8 +184,8 @@ export default {
     }
   }
   .register-form {
-    padding: 0;
-    background-color: #fff;
+    padding: 0 6%;
+    // background-color: #fff;
     [class*="register-form--icon"]{
       background: url() no-repeat scroll center;
       background-size: 100% 100%;

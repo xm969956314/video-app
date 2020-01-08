@@ -63,8 +63,7 @@
                     <span class="detail-viewing--times">{{item.viewingTimes}}万</span>
                   </div>
                   <div class="detail-favorable">
-                    <span>好评率 :</span>
-                    <span>100%</span>
+                    <span>好评率:</span><span>100%</span>
                   </div>
                 </div>
                 <div class="boutique-item--member text-center">
@@ -187,6 +186,10 @@ export default {
         .van-search__content {
           background-color: rgba(255, 255, 255, 0.35);
           border: 1px solid #794b53;
+          .van-cell{
+            padding: 4px 8px 4px 0;
+            line-height: 20px;
+          }
           .van-icon-search {
             color: #fff;
           }
@@ -211,8 +214,8 @@ export default {
       a {
         background: url() no-repeat scroll center;
         background-size: 100% 100%;
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 1.3rem;
+        height: 1.3rem;
         position: relative;
         // margin-top: 50%;
         transform: translateY(22%);
@@ -324,7 +327,7 @@ export default {
           /* 观看次数 */
           .detail-viewing {
             color: #808080;
-            font: normal 400 0.7rem/1.2rem "Microsoft YaHei";
+            font: normal 400 0.8rem/1.2rem "黑体";
             // margin: 0 0.3rem 0 0.4rem;
             margin: 0 0.2rem 0 0.2rem;
             .detail-viewing--img {
@@ -341,7 +344,7 @@ export default {
           .detail-favorable {
             color: #f87074;
             float: left;
-            font: normal 400 0.7rem/1.2rem "Microsoft YaHei";
+            font: normal 400 0.8rem/1.2rem "黑体";
           }
         }
         /* 加入会员 */
