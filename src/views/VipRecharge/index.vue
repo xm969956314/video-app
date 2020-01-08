@@ -24,66 +24,26 @@
     <!-- vip 选择套餐 进行付款 -->
     <div class="vrecharge-package">
       <h5>套餐选择</h5>
+      <!-- 新用户专享 -->
       <div class="van-tabs van-tabs--line">
         <div class="van-tabs__wrap van-tabs__wrap--scrollable van-hairline--top-bottom">
           <ul role="tablist" class="van-tabs__nav van-tabs__nav--line">
             <li
               v-for="(item, i) in packageList"
               :key="i"
-              class="van-tab"
-              style="flex-basis: 29%;"
               :class="{'active': currentPackage == item}"
               @click="choosePackage(item, i)"
             >
               <div class="vrecharge-package--name">{{item.name}}</div>
               <div class="vrecharge-package--price">
-                <span>￥</span>
-                <span>{{item.price}}</span>
+                <span>￥</span><span>{{item.price}}</span>
               </div>
-              <!-- 新用户专享 -->
               <div class="vrecharge-package--newuser" v-if="item.isNewUser">新用户专享</div>
             </li>
-            <li
-              v-for="(item, i) in packageList"
-              :key="i"
-              class="van-tab"
-              style="flex-basis: 29%;"
-              :class="{'active': currentPackage == item}"
-              @click="choosePackage(item, i)"
-            >
-              <div class="vrecharge-package--name">{{item.name}}</div>
-              <div class="vrecharge-package--price">
-                <span>￥</span>
-                <span>{{item.price}}</span>
-              </div>
-              <!-- 新用户专享 -->
-              <div class="vrecharge-package--newuser" v-if="item.isNewUser">新用户专享</div>
-            </li>
-            <!-- <div role="tab" aria-selected="true" class="van-tab" style="flex-basis: 29%;">
-              <span class="van-tab__text">言情</span>
-            </div>
-            <div role="tab" class="van-tab" style="flex-basis: 29%;">
-              <span class="van-tab__text">玄幻1</span>
-            </div>
-            <div role="tab" class="van-tab" style="flex-basis: 29%;">
-              <span class="van-tab__text">玄幻2</span>
-            </div>
-            <div role="tab" class="van-tab" style="flex-basis: 29%;">
-              <span class="van-tab__text">玄幻3</span>
-            </div>
-            <div role="tab" class="van-tab" style="flex-basis: 29%;">
-              <span class="van-tab__text">玄幻4</span>
-            </div>
-            <div role="tab" class="van-tab" style="flex-basis: 29%;">
-              <span class="van-tab__text">玄幻5</span>
-            </div>
-            <div role="tab" class="van-tab" style="flex-basis: 29%;">
-              <span class="van-tab__text">玄幻6</span>
-            </div>-->
           </ul>
         </div>
       </div>
-      <ul ref="packageUl">
+      <!-- <ul ref="packageUl">
         <li
           v-for="(item, i) in packageList"
           :key="i"
@@ -95,10 +55,10 @@
             <span>￥</span>
             <span>{{item.price}}</span>
           </div>
-          <!-- 新用户专享 -->
+
           <div class="vrecharge-package--newuser" v-if="item.isNewUser">新用户专享</div>
         </li>
-      </ul>
+      </ul> -->
     </div>
     <!-- vip 会员特权 -->
     <div class="vrecharge-member">
@@ -136,6 +96,30 @@ export default {
           price: '58',
           isNewUser: false,
           save: 33
+        },
+        {
+          name: '一年VIP',
+          price: '117',
+          isNewUser: false,
+          save: 68
+        },
+        {
+          name: '两年VIP',
+          price: '232',
+          isNewUser: false,
+          save: 140
+        },
+        {
+          name: '三年VIP',
+          price: '460',
+          isNewUser: false,
+          save: 288
+        },
+        {
+          name: '五年VIP',
+          price: '900',
+          isNewUser: false,
+          save: 600
         }
       ], // 套餐列表
       user: {
@@ -230,65 +214,73 @@ export default {
   .vrecharge-package {
     flex-basis: 35.2%;
     margin-bottom: 1.9%;
+    padding-right: 0;
     h5 {
       font-size: 1rem;
       color: #333;
-      margin: 0.7rem 0 1.1rem;
+      margin: 0.7rem 0 0.4rem;
     }
-    ul {
-      display: flex;
-      li {
-        flex: 1;
-        border: 1px solid #b39d67;
-        border-radius: 0.4rem;
-        text-align: center;
-        cursor: pointer;
-        position: relative;
-        box-sizing: border-box;
-        margin-right: 0.4rem;
-        &:nth-last-child() {
-          margin: 0;
-        }
-        &.active {
-          .vrecharge-package--price {
-            background: url("../../assets/golden-inner.png") no-repeat scroll
-              center;
-            background-size: 100% 100%;
-          }
-        }
-        .vrecharge-package--name {
-          background-color: #ebc375;
-          padding: 0.6rem 0;
-          font-size: 1rem;
-          border-radius: 0.36rem 0.36rem 0 0;
-        }
-        /* vip user-info */
-        .vrecharge-package--price {
-          height: 5.4rem;
-          line-height: 5.4rem;
-          color: #98752d;
-          border-radius: 0 0 0.36rem 0.36rem;
-          span {
-            &:nth-child(1) {
-              font-size: 2rem;
+    .van-tabs {
+      .van-tabs__wrap {
+        height: auto;
+        ul {
+          display: flex;
+          padding: 0.7rem 0 0;
+          li {
+            flex-basis: 30%;
+            border: 1px solid #b39d67;
+            border-radius: 0.4rem;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            box-sizing: border-box;
+            margin-right: 0.4rem;
+            &:nth-last-child() {
+              margin: 0;
             }
-            &:nth-child(2) {
-              font-size: 3rem;
+            &.active {
+              .vrecharge-package--price {
+                background: url("../../assets/golden-inner.png") no-repeat scroll
+                  center;
+                background-size: 100% 100%;
+              }
+            }
+            .vrecharge-package--name {
+              background-color: #ebc375;
+              width: 28vw;
+              padding: 0.6rem 0;
+              font-size: 0.9rem;
+              border-radius: 0.36rem 0.36rem 0 0;
+            }
+            /* vip user-info */
+            .vrecharge-package--price {
+              height: 5.4rem;
+              line-height: 5.4rem;
+              color: #98752d;
+              border-radius: 0 0 0.36rem 0.36rem;
+              span {
+                &:nth-child(1) {
+                  font-size: 2rem;
+                }
+                &:nth-child(2) {
+                  font-size: 2.6rem;
+                }
+              }
+            }
+            /* vip user-info */
+            .vrecharge-package--newuser {
+              position: absolute;
+              left: 0;
+              top: -0.7rem;
+              height: 1.4rem;
+              width: 5.6rem;
+              background: url("../../assets/exclusive4newusers.png") no-repeat
+                scroll center;
+              background-size: 100% 100%;
+              color: #333;
+              font: normal 400 0.8rem/1.4rem "Microsoft YaHei";
             }
           }
-        }
-        /* vip user-info */
-        .vrecharge-package--newuser {
-          position: absolute;
-          left: 0;
-          top: -0.7rem;
-          height: 1.4rem;
-          width: 5.6rem;
-          background: url("../../assets/exclusive4newusers.png") no-repeat
-            scroll center;
-          background-size: 100% 100%;
-          color: #333;
-          font: normal 400 0.8rem/1.4rem "Microsoft YaHei";
         }
       }
     }
